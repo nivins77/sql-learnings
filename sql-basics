@@ -27,9 +27,6 @@ Select count(*) as total_emp
 From corporate_team
 Where department = 'Data' OR department =  'Cloud';
 
-Select department, count(*) as total_emp, avg(salary) as avg_salary
-From corporate_team
-Group by department;
 
 SELECt name, salary
 from corporate_team
