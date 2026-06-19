@@ -1,1 +1,37 @@
-SELECT 'SQL is working!' AS status;
+-- Create a more realistic employee dataset
+CREATE TABLE corporate_team (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    department TEXT,
+    salary INTEGER,
+    age INTEGER
+);
+
+INSERT INTO corporate_team (name, department, salary, age) VALUES 
+('Jack', 'Data', 75000, 24),
+('Sarah', 'Data', 115000, 34),
+('David', 'Cloud', 125000, 41),
+('Emily', 'Cloud', 95000, 29),
+('James', 'HR', 60000, 28),
+('Jessica', 'HR', 65000, 31),
+('Michael', 'Finance', 85000, 38),
+('Laura' , 'Finance', 90000, 27),
+('Robert', 'Marketing', 70000, 33),
+('Sophia', 'Marketing', 80000, 26);
+-- Fixed: removed premature semicolon after Jessica row and ensured single INSERT statement
+
+
+SELECT name, department, salary FROM corporate_team GROUP BY name Having salary <80000;
+
+Select count(*) as total_emp
+From corporate_team
+Where department = 'Data' OR department =  'Cloud';
+
+Select department, count(*) as total_emp, avg(salary) as avg_salary
+From corporate_team
+Group by department;
+
+SELECt name, salary
+from corporate_team
+where salary = (select max(salary) from corporate_team)
+OR salary = (select min(salary) from corporate_team);
