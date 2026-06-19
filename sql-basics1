@@ -1,0 +1,16 @@
+Create table Employee (
+    EmpID int primary key,
+    Name varchar(50),
+    Age int
+
+);
+Insert into Employee (EmpID, Name, Age) values 
+(1, 'John Doe', 30),
+(2, 'Jane Smith', 25),
+(3, 'Mike Johnson', 40),
+(4, 'Emily Davis', 35),
+(5, 'David Wilson', 28);
+
+
+Select * from Employee where Age > 30;
+Select Age from Employee where EmpID = 2;
