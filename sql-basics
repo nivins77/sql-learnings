@@ -15,7 +15,7 @@ INSERT INTO corporate_team (name, department, salary, age) VALUES
 ('James', 'HR', 60000, 28),
 ('Jessica', 'HR', 65000, 31),
 ('Michael', 'Finance', 85000, 38),
-('Laura' , 'Finance', 90000, 27),
+('Laura' , 'Marketing', 90000, 27),
 ('Robert', 'Marketing', 70000, 33),
 ('Sophia', 'Marketing', 80000, 26);
 -- Fixed: removed premature semicolon after Jessica row and ensured single INSERT statement
@@ -32,3 +32,15 @@ SELECt name, salary
 from corporate_team
 where salary = (select max(salary) from corporate_team)
 OR salary = (select min(salary) from corporate_team);
+
+
+select * from corporate_team;
+
+select MIN(id), department FROM corporate_team
+group by department;
+
+select max(age) from corporate_team;
+
+UPDATE corporate_team
+SET salary = 50000
+WHERE name = 'Jack';
