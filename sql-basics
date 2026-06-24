@@ -21,26 +21,38 @@ INSERT INTO corporate_team (name, department, salary, age) VALUES
 -- Fixed: removed premature semicolon after Jessica row and ensured single INSERT statement
 
 
-SELECT name, department, salary FROM corporate_team GROUP BY name Having salary <80000;
-
-Select count(*) as total_emp
-From corporate_team
-Where department = 'Data' OR department =  'Cloud';
-
-
-SELECt name, salary
-from corporate_team
-where salary = (select max(salary) from corporate_team)
-OR salary = (select min(salary) from corporate_team);
-
-
-select * from corporate_team;
-
-select MIN(id), department FROM corporate_team
+select count(*), department from corporate_team
 group by department;
 
-select max(age) from corporate_team;
+select round(avg(salary),0) as SALARY, department from corporate_team
+group by department;
 
-UPDATE corporate_team
-SET salary = 50000
-WHERE name = 'Jack';
+select min(age), max(age), department from corporate_team
+group by department;
+
+SELECT MAX(Salary), department FROM corporate_team
+GROUP BY department
+order by max(salary) desc;
+
+SELECT SUM(Salary) as total_payroll, department
+from corporate_team
+GROUP BY department;
+
+SELECT round(AVG(Salary),0), department 
+FROM corporate_team
+GROUP BY department;
+
+SELECT COUNT(*), department
+FROM corporate_team
+group by department
+having Count(*) < 3;
+
+Select department FROM corporate_team
+group by department
+having sum(salary) > 150000
+order by sum(salary) desc;
+
+
+Select department, (max(salary) - min(salary)) as salary_difference
+from corporate_team
+group by department;
